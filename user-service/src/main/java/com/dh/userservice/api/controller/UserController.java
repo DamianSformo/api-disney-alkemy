@@ -6,7 +6,7 @@ import com.dh.userservice.api.service.IUserService;
 import com.dh.userservice.domain.dto.UserShowDto;
 import com.dh.userservice.domain.model.AuthenticationRequest;
 import com.dh.userservice.domain.model.User;
-import com.dh.userservice.mail.MailService;
+import com.dh.userservice.api.mail.MailService;
 import io.swagger.v3.oas.annotations.Operation;
 import org.springframework.cloud.context.config.annotation.RefreshScope;
 import org.springframework.http.HttpStatus;
@@ -31,6 +31,7 @@ public class UserController {
     }
 
     //* ///////// POST ///////// *//
+
     @Operation(summary = "Guardar o actualizar un Usuario")
     @PostMapping("/register")
     public ResponseEntity<UserShowDto> save(@RequestBody User user) throws BadRequestException, MessagingException, IOException {
@@ -57,6 +58,7 @@ public class UserController {
     }
 
     //* ///////// DELETE ///////// *//
+
     @Operation(summary = "Eliminar un Usuario por Id")
     @DeleteMapping("/{id}")
     public ResponseEntity<Void> delete(@PathVariable Long id) throws ResourceNotFoundException {
