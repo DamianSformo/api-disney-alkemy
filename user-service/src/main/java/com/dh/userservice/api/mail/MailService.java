@@ -23,7 +23,6 @@ public class MailService {
     private String template = "d-fbf47b7ceb0a4cbd9b74bb6b800a5cb1";
 
     public String send(String email, String name) throws IOException {
-        // the sender email should be the same as we used to Create a Single Sender Verification
         Email from = new Email("damiansformo@gmail.com");
         Email to = new Email(email);
         Mail mail = new Mail();
