@@ -1,0 +1,22 @@
+spring:
+  application:
+    name: character-service
+
+  cloud:
+    config:
+      discovery:
+        enable: true
+        id-service: config-service
+
+  rabbitmq:
+    username: guest
+    password: guest
+    host: localhost
+    port: 5672
+
+queue:
+  character:
+    name: CharacterQueue
+
+
+

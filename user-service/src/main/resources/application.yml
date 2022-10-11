@@ -1,0 +1,14 @@
+spring:
+  application:
+    name: user-service
+
+  cloud:
+    config:
+      discovery:
+        enable: true
+        id-service: config-service
+
+  sendgrid:
+    api-key: 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
+    username: # SendGrid account username (if API key not provided).
+    password: # SendGrid account password.

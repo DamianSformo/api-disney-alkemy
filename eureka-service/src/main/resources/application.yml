@@ -1,0 +1,9 @@
+spring:
+  application:
+    name: eureka-service
+
+  cloud:
+    config:
+      discovery:
+        enable: true
+        id-service: config-service

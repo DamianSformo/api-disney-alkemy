@@ -1,0 +1,19 @@
+spring:
+  application:
+    name: movie-service
+
+  cloud:
+    config:
+      discovery:
+        enable: true
+        id-service: config-service
+
+  rabbitmq:
+    username: guest
+    password: guest
+    host: localhost
+    port: 5672
+
+queue:
+  movie:
+    name: MovieQueue
