@@ -1,6 +1,6 @@
 # api-disney-alkemy
 
-Osrden:
+orden:
 - config-service
 - eureka-service
 - gateway-service
