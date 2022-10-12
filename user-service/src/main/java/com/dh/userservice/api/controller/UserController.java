@@ -52,7 +52,7 @@ public class UserController {
     }
 
     @Operation(summary = "Log in de Usuario")
-    @PostMapping("/authenticate")
+    @PostMapping("/login")
     public ResponseEntity<UserShowDto> createAuthenticationToken(@RequestBody AuthenticationRequest authenticationRequest) throws BadRequestException {
         return ResponseEntity.ok(userService.authenticate(authenticationRequest));
     }
