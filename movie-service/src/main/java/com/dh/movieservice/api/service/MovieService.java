@@ -3,10 +3,12 @@ package com.dh.movieservice.api.service;
 import com.dh.movieservice.Exceptions.ResourceNotFoundException;
 import com.dh.movieservice.api.client.MovieCharacterServiceClient;
 import com.dh.movieservice.domain.mapper.MovieMapper;
+import com.dh.movieservice.domain.model.Genre;
 import com.dh.movieservice.domain.model.Movie;
 import com.dh.movieservice.domain.model.dto.CharacterShowDto;
 import com.dh.movieservice.domain.model.dto.MovieCompleteDto;
 import com.dh.movieservice.domain.model.dto.MovieShowDto;
+import com.dh.movieservice.domain.repository.IGenreRepository;
 import com.dh.movieservice.domain.repository.IMovieRepository;
 import com.dh.movieservice.queue.MovieSender;
 import com.dh.movieservice.shared.GenericServiceImpl;
@@ -27,6 +29,8 @@ import java.util.Optional;
 public class MovieService extends GenericServiceImpl<Movie, Long> implements IMovieService {
 
     private final IMovieRepository movieRepository;
+
+    private final IGenreRepository genreRepository;
 
     private final MovieCharacterServiceClient movieCharacterServiceClient;
 
@@ -118,6 +122,18 @@ public class MovieService extends GenericServiceImpl<Movie, Long> implements IMo
         movieRepository.deleteById(id);
         log.info("Se eliminó la Película correctamente: id("+id+")");
         movieSender.sendMovie(movie, "delete");
+    }
+
+    public Genre saveGenre(Genre genre) {
+        Genre genreSave = new Genre();
+        if (genre.getId() == null){
+            genreSave = genreRepository.save(genre);
+            log.info("Género registrado correctamente: "+ genreSave);
+        } else {
+            genreSave = genreRepository.save(genre);
+            log.info("Género actualizado correctamente: "+ genreSave);
+        }
+        return genreSave;
     }
 
     @Override

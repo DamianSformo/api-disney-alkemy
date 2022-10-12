@@ -45,10 +45,12 @@ public class CharacterController {
     @Operation(summary = "Traer un Personaje o varios Personajes filtrados")
     @GetMapping
     public ResponseEntity<?> findCharacters(@RequestParam(required = false) String name, @RequestParam(required = false) Long movieId, @RequestParam(required = false) Integer age, @RequestParam(required = false) List<Double> weight) throws ResourceNotFoundException {
-        if(name != null){
+        if(name != null) {
             return ResponseEntity.ok().body(characterService.getByName(name));
-        } else {
+        } else if((movieId != null) || (age != null) || (weight != null)){
             return ResponseEntity.ok().body(characterService.filter(movieId, age, weight));
+        } else {
+            return ResponseEntity.ok().body(characterService.getAll());
         }
     }
 

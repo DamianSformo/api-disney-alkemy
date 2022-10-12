@@ -11,6 +11,7 @@ import java.util.List;
 public interface ICharacterService extends GenericServiceAPI<Character, Long> {
 
     CharacterCompleteDto getById(Long id) throws ResourceNotFoundException;
+    List<CharacterShowDto> getAll();
     CharacterShowDto getByName(String name) throws ResourceNotFoundException;
     List<CharacterShowDto> filter(Long movieId, Integer age, List<Double> weight);
 }

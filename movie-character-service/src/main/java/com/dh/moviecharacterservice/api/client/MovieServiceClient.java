@@ -1,5 +1,6 @@
 package com.dh.moviecharacterservice.api.client;
 
+import com.dh.moviecharacterservice.domain.model.Genre;
 import com.dh.moviecharacterservice.domain.model.Movie;
 import org.springframework.cloud.openfeign.FeignClient;
 import org.springframework.http.ResponseEntity;
@@ -11,5 +12,8 @@ public interface MovieServiceClient {
 
     @PostMapping("/")
     ResponseEntity<Movie> save(@RequestBody Movie movie);
+
+    @PostMapping("/genre")
+    ResponseEntity<Genre> saveGenre(@RequestBody Genre genre);
 }
 

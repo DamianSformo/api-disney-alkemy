@@ -2,6 +2,7 @@ package com.dh.movieservice.api.controller;
 
 import com.dh.movieservice.Exceptions.ResourceNotFoundException;
 import com.dh.movieservice.api.service.MovieService;
+import com.dh.movieservice.domain.model.Genre;
 import com.dh.movieservice.domain.model.Movie;
 import com.dh.movieservice.domain.model.dto.MovieCompleteDto;
 import io.swagger.v3.oas.annotations.Operation;
@@ -29,6 +30,15 @@ public class MovieController {
             return ResponseEntity.status(HttpStatus.CREATED).body(movieService.save(movie));
         else
             return ResponseEntity.ok(movieService.save(movie));
+    }
+
+    @Operation(summary = "Guardar o actualizar una Película")
+    @PostMapping("/genre")
+    public ResponseEntity<Genre> saveGenre(@RequestBody Genre genre) {
+        if(genre .getId() == null)
+            return ResponseEntity.status(HttpStatus.CREATED).body(movieService.saveGenre(genre));
+        else
+            return ResponseEntity.ok(movieService.saveGenre(genre));
     }
 
     //* ///////// GET ///////// *//

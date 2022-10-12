@@ -67,6 +67,16 @@ public class CharacterServiceImpl extends GenericServiceImpl<Character, Long> im
     }
 
     @Override
+    public List<CharacterShowDto> getAll() {
+        List<Character> characters = characterRepository.findAll();
+        List<CharacterShowDto> characterShowDtos = new ArrayList<>();
+        for(Character character : characters){
+            characterShowDtos.add(characterMapper.toCharacterShowDto(character));
+        }
+        return characterShowDtos;
+    }
+
+    @Override
     public CharacterShowDto getByName(String name) throws ResourceNotFoundException {
         Optional<Character> character = characterRepository.getByName(name);
         if (character.isPresent()) {

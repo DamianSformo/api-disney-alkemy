@@ -37,7 +37,7 @@ public class Movie implements Serializable {
     @Column
     private Date dateCreated;
 
-    @ManyToOne
+    @ManyToOne(cascade = CascadeType.DETACH)
     @JoinColumn(name = "genre_id", referencedColumnName = "id")
     @JsonIgnoreProperties({"hibernateLazyInitializer", "handler"})
     private Genre genre;

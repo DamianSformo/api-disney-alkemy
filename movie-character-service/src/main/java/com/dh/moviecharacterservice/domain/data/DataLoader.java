@@ -45,14 +45,16 @@ public class DataLoader implements ApplicationRunner {
         genre1.setName("terror");
 
         var gDB1 = genreRepository.save(genre1);
+        var gcDB1 = movieServiceClient.saveGenre(genre1);
         log.info(gDB1.toString());
 
         var genre2 = new Genre();
         genre2.setId(2L);
-        genre2.setImage("url.suspenso");
-        genre2.setName("suspenso");
+        genre2.setImage("url.suspense");
+        genre2.setName("suspense");
 
         var gDB2 = genreRepository.save(genre2);
+        var gcDB2 = movieServiceClient.saveGenre(genre2);
         log.info(gDB2.toString());
 
         var movie1 = new Movie();
@@ -72,7 +74,7 @@ public class DataLoader implements ApplicationRunner {
         movie2.setImage("url.sky-sharks");
         movie2.setTitle("Sky Sharks");
         movie2.setRating(2);
-        movie1.setGenre(gDB1);
+        movie2.setGenre(gDB1);
         Date date2 = new Date(122, 12, 12);
         movie2.setDateCreated(date2);
 

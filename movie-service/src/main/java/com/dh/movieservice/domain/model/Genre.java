@@ -15,7 +15,7 @@ import java.util.List;
 @Table
 @AllArgsConstructor
 @NoArgsConstructor
-@JsonIgnoreProperties()
+@JsonIgnoreProperties({"movies"})
 public class Genre implements Serializable {
 
     @Serial
